@@ -4,17 +4,10 @@
   <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#002D5B">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Fryeburg Academy Raider Report</title>
   <!-- Favicon -->
   <link rel="icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-32x32.png" sizes="32x32">
   <link rel="icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-192x192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-192x192.png">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
@@ -1460,40 +1453,16 @@
       return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
     
-    // Detect iOS Safari and Instagram browser
-    function isIOSSafariOrInstagram() {
-      const ua = navigator.userAgent.toLowerCase();
-      const isIOS = /iphone|ipad|ipod/.test(ua);
-      const isInstagram = ua.indexOf('instagram') > -1;
-      const isSafari = ua.indexOf('safari') > -1 && ua.indexOf('chrome') === -1;
-      return isIOS && (isSafari || isInstagram);
-    }
-    
-    // Detect Android browser issues
-    function isAndroidBrowser() {
-      const ua = navigator.userAgent.toLowerCase();
-      return ua.indexOf('android') > -1;
-    }
-    
     // Handle link clicks based on device type
     function handleIssueClick(event, pdfId, pdfUrl, title) {
       event.preventDefault();
       logClick(title);
       
-      // Always use direct link for iOS Safari, Instagram browser, or Android
-      if (isIOSSafariOrInstagram() || isAndroidBrowser() || 
-          (isMobileDevice() && (document.referrer.includes('instagram') || 
-          /FBAN|FBAV|Twitter|Line|WhatsApp|wv/.test(navigator.userAgent)))) {
-        
-        // Force new tab/window for iOS Safari and Android
-        const openWindow = window.open(pdfUrl, '_blank');
-        
-        // Fallback if window.open is blocked
-        if (!openWindow || openWindow.closed || typeof openWindow.closed === 'undefined') {
-          window.location.href = pdfUrl;
-        }
+      // If coming from Instagram or other apps that have their own browser, go directly to Google
+      if (isMobileDevice() && (document.referrer.includes('instagram') || /FBAN|FBAV|Twitter|Line|WhatsApp|wv/.test(navigator.userAgent))) {
+        window.location.href = pdfUrl;
       } else {
-        // For desktop and other supported browsers, use the modal
+        // Otherwise open in our modal
         openPdfModal(pdfId, pdfUrl, title);
       }
     }
@@ -1626,7 +1595,7 @@
             <div class="featured-date">${issue.date}</div>
             <h3 class="featured-title">${issue.description}</h3>
             <p class="featured-description">Check out our latest issue of the Raider Report, featuring school news, sports updates, and student achievements.</p>
-            <a href="#" class="btn" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">Read Full Issue</a>
+            <a href="#" class="btn" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.description}')">Read Full Issue</a>
           </div>
         </div>
       `;
@@ -1677,7 +1646,7 @@
         
         // Build the card HTML
         let cardHTML = `
-          <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">
+          <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.description}')">
             <div class="issue-image">
               <img src="https://drive.google.com/thumbnail?id=${issue.imageId}" alt="${issue.title}">
               ${isNew ? '<div class="new-badge">NEW</div>' : ''}
@@ -1713,7 +1682,7 @@
         // Build the slide HTML with explicit image handling
         slide.innerHTML = `
           <div class="issue-card">
-            <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">
+            <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.description}')">
               <div class="issue-image">
                 <img src="https://drive.google.com/thumbnail?id=${issue.imageId}" 
                     alt="${issue.title || 'Issue image'}" 
@@ -2031,96 +2000,6 @@
         });
       });
     });
-  </script>
-
-  <!-- Cross-browser compatibility fixes -->
-  <script>
-    // Fix for iOS Safari, Instagram browser, and Android issues
-    (function() {
-      // Detect if we're running in Instagram, iOS Safari, or Android browser
-      const ua = navigator.userAgent.toLowerCase();
-      const isIOS = /iphone|ipad|ipod/.test(ua);
-      const isInstagram = ua.indexOf('instagram') > -1;
-      const isAndroid = ua.indexOf('android') > -1;
-      const isSafari = ua.indexOf('safari') > -1 && ua.indexOf('chrome') === -1;
-      
-      // Add platform-specific classes to body
-      document.addEventListener('DOMContentLoaded', function() {
-        if (isIOS) document.body.classList.add('ios-device');
-        if (isInstagram) document.body.classList.add('instagram-browser');
-        if (isAndroid) document.body.classList.add('android-device');
-        if (isSafari) document.body.classList.add('safari-browser');
-        
-        // Add platform-specific CSS fixes
-        const platformStyle = document.createElement('style');
-        platformStyle.textContent = `
-          /* iOS Safari fixes */
-          .ios-device .scroll-to-top {
-            -webkit-tap-highlight-color: transparent;
-          }
-          
-          /* Fix for Instagram and in-app browsers */
-          .instagram-browser .modal-overlay,
-          .instagram-browser .pdf-modal {
-            display: none !important;
-          }
-          
-          /* Fix for Android devices */
-          .android-device {
-            -webkit-overflow-scrolling: touch;
-          }
-          
-          /* Ensure better touchability for all interactive elements */
-          .btn, .category-tab, a, button {
-            cursor: pointer;
-            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          /* Fix for PDF viewing on mobile */
-          .pdf-iframe {
-            width: 1px;
-            min-width: 100%;
-            *width: 100%;
-            height: 100%;
-            border: none;
-          }
-        `;
-        document.head.appendChild(platformStyle);
-      });
-      
-      // Ensure all links to PDFs open properly on problematic browsers
-      document.addEventListener('click', function(e) {
-        // Look for links to PDFs
-        const target = e.target.closest('a');
-        if (target && (isIOS || isInstagram || isAndroid)) {
-          const href = target.getAttribute('href');
-          if (href && (href.includes('.pdf') || href.includes('drive.google.com'))) {
-            e.preventDefault();
-            window.open(href, '_blank');
-          }
-        }
-      }, true);
-      
-      // Fix for scrolling issues on iOS
-      if (isIOS) {
-        window.addEventListener('load', function() {
-          // Add momentum scrolling for iOS
-          document.body.style.webkitOverflowScrolling = 'touch';
-          
-          // Fix for iOS viewport height issues
-          const setVH = function() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-          };
-          setVH();
-          window.addEventListener('resize', setVH);
-        });
-      }
-    })();
   </script>
 </body>
 </html> 
