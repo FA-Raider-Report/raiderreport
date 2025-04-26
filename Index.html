@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#002D5B">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Fryeburg Academy Raider Report</title>
+  <!-- Favicon -->
+  <link rel="icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="https://fryeburgacademy.org/wp-content/uploads/2019/10/cropped-FA-Favicon-1-192x192.png">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      /* School Colors */
+      --primary: #002D5B;
+      --secondary: #6DC4BC;
+      --accent: #00AEEF;
+      --warning: #F26652;
+      --text-dark: #333;
+      --text-light: #fff;
+      --bg-light: #f4f8fb;
+      --bg-lighter: #ffffff;
+      --shadow: 0 5px 20px rgba(0, 45, 91, 0.1);
+      --shadow-hover: 0 10px 30px rgba(0, 45, 91, 0.15);
+      --border-radius: 10px;
+      
+      /* Fonts */
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'Source Sans Pro', sans-serif;
+      
+      /* Spacing */
+      --spacing-xs: 5px;
+      --spacing-sm: 10px;
+      --spacing-md: 20px;
+      --spacing-lg: 40px;
+      --spacing-xl: 80px;
+    }
+    
+    /* ===== RESET & BASE STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    
+    p {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* ===== LAYOUT ===== */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+    
+    /* ===== HEADER ===== */
+    .site-header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: var(--spacing-md) 0;
+      position: relative;
+      z-index: 100;
+    }
+    
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .academy-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    
+    .academy-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .academy-title span {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .academy-logo {
+      height: 70px;
+      width: auto;
+      margin: 0 15px;
+    }
+    
+    .raider-header {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      width: 80%;
+    }
+    
+    .raider-title {
+      font-family: var(--font-title);
+      font-size: 3.5rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      margin: 0;
+      line-height: 1.1;
+    }
+    
+    .raider-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      opacity: 0.9;
+      font-style: italic;
+      margin-top: 5px;
+    }
+    
+    /* Responsive header */
+    @media (max-width: 768px) {
+      .academy-title span {
+        font-size: 1.5rem;
+      }
+      
+      .academy-logo {
+        height: 50px;
+      }
+      
+      .raider-title {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
+      
+      .raider-subtitle {
+        font-size: 0.95rem;
+      }
+      
+      .raider-header {
+        width: 90%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .academy-title span {
+        font-size: 1.2rem;
+      }
+      
+      .academy-logo {
+        height: 40px;
+      }
+      
+      .raider-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+      
+      .raider-subtitle {
+        font-size: 0.85rem;
+      }
+      
+      .raider-header {
+        width: 100%;
+      }
+    }
+    
+    /* ===== SUBHEADER ===== */
+    .subheader {
+      background-color: var(--bg-lighter);
+      padding: var(--spacing-md) 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    
+    .subheader h2 {
+      font-size: 2rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .subheader h2:after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 3px;
+      background-color: var(--secondary);
+      margin: 10px auto 0;
+    }
+    
+    /* ===== LOADING SPINNER ===== */
+    #loadingSpinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--primary);
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .spinner-wrapper {
+      text-align: center;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--secondary);
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .spinner-text {
+      margin-top: var(--spacing-md);
+      color: var(--text-light);
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+    
+    /* ===== FEATURE SECTION ===== */
+    .feature-section {
+      padding: var(--spacing-lg) 0;
+      background-color: var(--bg-light);
+    }
+    
+    .feature-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .section-title h3 {
+      font-size: 1.8rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: var(--spacing-sm);
+    }
+    
+    .section-title h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+    
+    .featured-issue {
+      display: flex;
+      background-color: var(--bg-lighter);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .featured-issue:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .featured-image {
+      flex: 0 0 50%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .featured-issue:hover .featured-image img {
+      transform: scale(1.05);
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      z-index: 2;
+    }
+    
+    .featured-content {
+      flex: 0 0 50%;
+      padding: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .featured-date {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .featured-title {
+      font-size: 2.2rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--primary);
+    }
+    
+    .featured-description {
+      margin-bottom: var(--spacing-lg);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: transparent;
+      color: var(--primary);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      color: var(--secondary);
+    }
+    
+    /* ===== ISSUES GRID ===== */
+    .issues-section {
+      padding: var(--spacing-lg) 0;
+      background-color: var(--bg-light);
+    }
+    
+    .issues-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: var(--spacing-lg);
+    }
+    
+    .issue-card {
+      background-color: var(--bg-lighter);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    .issue-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .issue-image {
+      position: relative;
+      padding-top: 100%; /* Aspect ratio 1:1 (square) instead of 120% */
+    }
+    
+    .issue-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .issue-card:hover .issue-image img {
+      transform: scale(1.05);
+    }
+    
+    .issue-date {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(0, 45, 91, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      z-index: 1;
+    }
+    
+    .issue-content {
+      padding: var(--spacing-md);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .issue-title {
+      font-size: 1.4rem;
+      margin-bottom: var(--spacing-sm);
+      color: var(--primary);
+      flex-grow: 1;
+    }
+    
+    .issue-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--spacing-sm);
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .read-more i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* Animation for issue cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Animation delay for issue cards */
+    .issue-card:nth-child(1) { animation-delay: 0.1s; }
+    .issue-card:nth-child(2) { animation-delay: 0.2s; }
+    .issue-card:nth-child(3) { animation-delay: 0.3s; }
+    .issue-card:nth-child(4) { animation-delay: 0.4s; }
+    .issue-card:nth-child(5) { animation-delay: 0.5s; }
+    .issue-card:nth-child(6) { animation-delay: 0.6s; }
+    
+    /* ===== CATEGORIES SECTION ===== */
+    .categories-section {
+      padding: var(--spacing-lg) 0;
+      background-color: var(--bg-lighter);
+    }
+    
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .category-tab {
+      padding: 8px 20px;
+      background-color: var(--bg-light);
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .category-tab.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .category-tab:hover:not(.active) {
+      background-color: rgba(0, 45, 91, 0.1);
+    }
+    
+    /* ===== NEWSLETTER SECTION ===== */
+    .newsletter-section {
+      padding: var(--spacing-xl) 0;
+      background-color: var(--primary);
+      color: var(--text-light);
+      text-align: center;
+    }
+    
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-title {
+      color: var(--text-light);
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .newsletter-description {
+      margin-bottom: var(--spacing-lg);
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: var(--secondary);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .newsletter-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: var(--spacing-lg) 0 var(--spacing-md);
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+    
+    .footer-logo {
+      text-align: center;
+    }
+    
+    .footer-logo img {
+      max-width: 180px;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .footer-column h4 {
+      color: var(--secondary);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.3rem;
+      position: relative;
+      padding-bottom: var(--spacing-sm);
+    }
+    
+    .footer-column h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+    
+    .footer-column p {
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.6;
+    }
+    
+    .footer-contact a {
+      color: var(--accent);
+      transition: color 0.3s ease;
+    }
+    
+    .footer-contact a:hover {
+      color: var(--secondary);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--accent);
+      color: var(--text-light);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: var(--spacing-lg);
+      padding-top: var(--spacing-md);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* ===== SCROLL-TO-TOP BUTTON ===== */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--text-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 1200px) {
+      .featured-title {
+        font-size: 1.8rem;
+      }
+      
+      .issues-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .featured-issue {
+        flex-direction: column;
+      }
+      
+      .featured-image, .featured-content {
+        flex: 0 0 100%;
+      }
+      
+      .featured-image {
+        height: 300px;
+      }
+      
+      .issues-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-logo {
+        grid-column: span 2;
+        margin-bottom: var(--spacing-lg);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .site-header {
+        padding: var(--spacing-sm) 0;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+      
+      .logo-img {
+        height: 50px;
+      }
+      
+      .site-title h1 {
+        font-size: 1.8rem;
+      }
+      
+      .featured-content {
+        padding: var(--spacing-md);
+      }
+      
+      .featured-title {
+        font-size: 1.5rem;
+      }
+      
+      .issues-grid {
+        gap: 15px;
+      }
+      
+      .issue-title {
+        font-size: 1.2rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-buttons {
+        flex-direction: column;
+      }
+      
+      .desktop-header {
+        display: none;
+      }
+      
+      .mobile-header {
+        display: flex;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .issues-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+      
+      .footer-logo {
+        grid-column: span 1;
+      }
+      
+      .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+    
+    /* ===== PDF VIEWER MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .pdf-modal {
+      width: 90%;
+      height: 90%;
+      background-color: #fff;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .pdf-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .pdf-modal-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+    }
+    
+    .pdf-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .pdf-modal-download {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .pdf-modal-download:hover {
+      color: var(--secondary);
+    }
+    
+    .pdf-modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .pdf-modal-close:hover {
+      transform: scale(1.1);
+      color: var(--secondary);
+    }
+    
+    .pdf-modal-body {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .pdf-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Hide PDF controls since they're not functional with Google Drive viewer */
+    .pdf-controls {
+      display: none;
+    }
+    
+    /* New Badge for Recent Issues */
+    .new-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--warning);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* ===== SEARCH SECTION ===== */
+    .search-section {
+      background-color: var(--bg-lighter);
+      padding: 20px 0;
+      box-shadow: var(--shadow);
+    }
+    
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 2px solid rgba(0, 45, 91, 0.2);
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      padding-right: 50px;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 45, 91, 0.1);
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background: var(--accent);
+    }
+    
+    .search-results {
+      margin-top: 15px;
+      display: none;
+    }
+    
+    .search-results.active {
+      display: block;
+    }
+    
+    .search-result-header {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .search-no-results {
+      font-style: italic;
+      color: #666;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    /* ===== MOBILE CAROUSEL VIEW ===== */
+    .mobile-carousel-view {
+      display: none; /* Hidden by default, shown on mobile */
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 30px 0;
+    }
+    
+    .carousel-container {
+      display: flex;
+      transition: transform 0.4s ease;
+      width: 100%;
+    }
+    
+    /* Standard carousel slide without overlapping */
+    .carousel-slide {
+      min-width: 100%;
+      flex: 0 0 100%;
+      padding: 0 20px;
+      transition: all 0.4s ease;
+      opacity: 0.7; /* Change from 0 to 0.7 to make non-active slides partially visible */
+      transform: scale(0.9);
+    }
+    
+    /* Ensure issue card images are visible */
+    .carousel-slide .issue-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: none;
+      animation: none;
+    }
+    
+    /* Make sure images have correct dimensions and appear */
+    .carousel-slide .issue-image {
+      position: relative;
+      width: 100%;
+      /* Add fixed height to ensure images show properly */
+      height: 300px;
+      background-color: #f0f0f0; /* Light background in case image fails to load */
+    }
+    
+    .carousel-slide .issue-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Active slide is fully visible */
+    .carousel-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-arrow:hover {
+      background: var(--accent);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .carousel-prev {
+      left: 10px;
+    }
+    
+    .carousel-next {
+      right: 10px;
+    }
+    
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 45, 91, 0.3);
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+    
+    /* Mobile carousel only shows on mobile */
+    @media (max-width: 576px) {
+      .issues-grid {
+        display: none; /* Hide the regular grid on mobile */
+      }
+      
+      .mobile-carousel-view {
+        display: block; /* Show the carousel on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner">
+    <div class="spinner-wrapper">
+      <div class="spinner"></div>
+      <div class="spinner-text">RAIDER REPORT</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="academy-header">
+        <div class="academy-title">
+          <span>FRYEBURG</span>
+          <img src="https://drive.google.com/thumbnail?id=1uk_7sxFrIopAcnM3JC6uLdrt_PZp6s7j" alt="Fryeburg Academy Logo" class="academy-logo">
+          <span>ACADEMY</span>
+        </div>
+      </div>
+      <div class="raider-header">
+        <h1 class="raider-title">Raider Report</h1>
+        <p class="raider-subtitle">Fryeburg Academy's Student Publication</p>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Feature Section -->
+    <section class="feature-section">
+      <div class="container feature-container">
+        <div class="section-title">
+          <h3>Latest Issue</h3>
+        </div>
+        <div id="featuredIssue"></div>
+      </div>
+    </section>
+    
+    <!-- Issues Section -->
+    <section class="issues-section">
+      <div class="container">
+        <div class="section-title">
+          <h3>Previous Issues</h3>
+        </div>
+        <div class="category-tabs" id="categoryTabs">
+          <!-- Category tabs will be dynamically populated, removing redundant ones -->
+        </div>
+        
+        <!-- Regular grid view (hidden on mobile) -->
+        <div class="issues-grid" id="issuesGrid"></div>
+        
+        <!-- Mobile carousel view (hidden on desktop/tablet) -->
+        <div class="mobile-carousel-view" id="mobileCarousel">
+          <div class="carousel-arrow carousel-prev" id="carouselPrev">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="carousel-container" id="carouselContainer"></div>
+          <div class="carousel-arrow carousel-next" id="carouselNext">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="carousel-controls" id="carouselDots"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container newsletter-container">
+        <h3 class="newsletter-title">Subscribe to Our Newsletter</h3>
+        <p class="newsletter-description">Stay updated with the latest news, stories, and events from Fryeburg Academy's Raider Report. We send newsletters when new issues are released.</p>
+        <div class="newsletter-form">
+          <div class="form-group">
+            <input type="email" id="emailInput" class="form-input" placeholder="Your email address" required>
+          </div>
+          <div class="newsletter-buttons">
+            <button type="button" onclick="submitForm('subscribe')" class="btn">Subscribe</button>
+            <button type="button" onclick="submitForm('unsubscribe')" class="btn btn-secondary">Unsubscribe</button>
+          </div>
+        </div>
+        <div id="formMessage" style="margin-top: 15px; font-weight: 600;"></div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://drive.google.com/thumbnail?id=1whU4kXLX7zjkaVn9c_yu6ciUQgTEmIws" alt="Fryeburg Academy Logo">
+          <p>Raider Report</p>
+          <p>Fryeburg Academy's Student Publication</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <p>We are a Student-Led Newspaper Club at Fryeburg Academy! We edit, write, and take photos ourselves and publish bi-weekly.</p>
+          <p>Papers are available in the Library, PAC, and SU.</p>
+          <p>To join, come to MB104 during lunch on Tuesdays!</p>
+        </div>
+        
+        <div class="footer-column footer-contact">
+          <h4>Contact Us</h4>
+          <p><strong>Join the club:</strong><br>
+            <a href="mailto:holym.han26@fryeburgacademy.org">holym.han26@fryeburgacademy.org</a>
+          </p>
+          <p><strong>Suggestions/Mistakes:</strong><br>
+            <a href="mailto:anton.liesnoi26@fryeburgacademy.org">anton.liesnoi26@fryeburgacademy.org</a>
+          </p>
+          <h4>Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/fa.raider.report/" target="_blank" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Fryeburg Academy Raider Report. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scroll-to-Top Button -->
+  <div class="scroll-to-top" id="scrollToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- PDF Viewer Modal -->
+  <div class="modal-overlay" id="pdfModal">
+    <div class="pdf-modal">
+      <div class="pdf-modal-header">
+        <h3 class="pdf-modal-title" id="pdfModalTitle">Viewing PDF</h3>
+        <div class="pdf-modal-actions">
+          <button class="pdf-modal-download" id="pdfDownloadBtn">
+            <i class="fas fa-download"></i>
+          </button>
+          <button class="pdf-modal-close" id="pdfModalClose">&times;</button>
+        </div>
+      </div>
+      <div class="pdf-modal-body">
+        <iframe id="pdfIframe" class="pdf-iframe" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Main Scripts -->
+  <script>
+    // Initialize AOS Animations
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+      }, 500);
+    });
+    
+    // Current Year for Footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Loading Spinner
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const spinner = document.getElementById('loadingSpinner');
+        spinner.style.opacity = '0';
+        setTimeout(() => {
+          spinner.style.display = 'none';
+        }, 500);
+      }, 1500);
+    });
+    
+    // Scroll to Top Button
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // PDF Modal Functions
+    const pdfModal = document.getElementById('pdfModal');
+    const pdfIframe = document.getElementById('pdfIframe');
+    const pdfModalTitle = document.getElementById('pdfModalTitle');
+    const pdfModalClose = document.getElementById('pdfModalClose');
+    const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+    
+    // Variables to track PDF state
+    let currentPdfUrl = '';
+    let currentPdfId = '';
+    
+    // Close modal when clicking the close button or outside the modal
+    pdfModalClose.addEventListener('click', closePdfModal);
+    pdfModal.addEventListener('click', function(e) {
+      if (e.target === pdfModal) {
+        closePdfModal();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+        closePdfModal();
+      }
+    });
+    
+    // Download PDF
+    pdfDownloadBtn.addEventListener('click', function() {
+      if (currentPdfUrl) {
+        // Open the direct download URL in a new tab
+        window.open(currentPdfUrl, '_blank');
+      }
+    });
+    
+    function openPdfModal(pdfId, directUrl, title) {
+      // Prevent scrolling of the body when modal is open
+      document.body.style.overflow = 'hidden';
+      
+      // Store current PDF info
+      currentPdfId = pdfId;
+      currentPdfUrl = directUrl;
+      
+      // Set the iframe source to the PDF embed URL
+      google.script.run.withSuccessHandler(function(embedUrl) {
+        pdfIframe.src = embedUrl;
+        pdfModalTitle.textContent = title || 'Viewing PDF';
+        pdfModal.classList.add('active');
+      }).getPdfEmbedUrl(pdfId);
+    }
+    
+    function closePdfModal() {
+      pdfModal.classList.remove('active');
+      // Restore scrolling
+      document.body.style.overflow = '';
+      // Clear the iframe source after a short delay to avoid visual flicker
+      setTimeout(() => {
+        pdfIframe.src = '';
+        currentPdfUrl = '';
+        currentPdfId = '';
+      }, 300);
+    }
+
+    // Track Issue Clicks
+    function logClick(issueTitle) {
+      google.script.run.updateClickCountById(issueTitle);
+    }
+
+    // Mobile detection
+    function isMobileDevice() {
+      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
+    
+    // Detect iOS Safari and Instagram browser
+    function isIOSSafariOrInstagram() {
+      const ua = navigator.userAgent.toLowerCase();
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+      const isInstagram = ua.indexOf('instagram') > -1;
+      const isSafari = ua.indexOf('safari') > -1 && ua.indexOf('chrome') === -1;
+      return isIOS && (isSafari || isInstagram);
+    }
+    
+    // Detect Android browser issues
+    function isAndroidBrowser() {
+      const ua = navigator.userAgent.toLowerCase();
+      return ua.indexOf('android') > -1;
+    }
+    
+    // Handle link clicks based on device type
+    function handleIssueClick(event, pdfId, pdfUrl, title) {
+      event.preventDefault();
+      logClick(title);
+      
+      // Always use direct link for iOS Safari, Instagram browser, or Android
+      if (isIOSSafariOrInstagram() || isAndroidBrowser() || 
+          (isMobileDevice() && (document.referrer.includes('instagram') || 
+          /FBAN|FBAV|Twitter|Line|WhatsApp|wv/.test(navigator.userAgent)))) {
+        
+        // Force new tab/window for iOS Safari and Android
+        const openWindow = window.open(pdfUrl, '_blank');
+        
+        // Fallback if window.open is blocked
+        if (!openWindow || openWindow.closed || typeof openWindow.closed === 'undefined') {
+          window.location.href = pdfUrl;
+        }
+      } else {
+        // For desktop and other supported browsers, use the modal
+        openPdfModal(pdfId, pdfUrl, title);
+      }
+    }
+
+    // Newsletter Form Submission
+    function submitForm(action) {
+      const email = document.getElementById('emailInput').value;
+      const messageEl = document.getElementById('formMessage');
+      
+      if (!email) {
+        messageEl.style.color = 'var(--warning)';
+        messageEl.textContent = 'Please enter your email address.';
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        messageEl.style.color = 'var(--warning)';
+        messageEl.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      
+      messageEl.textContent = 'Processing...';
+      
+      if (action === 'subscribe') {
+        google.script.run
+          .withSuccessHandler(function(result) {
+            if (result.success) {
+              messageEl.style.color = 'var(--secondary)';
+              messageEl.textContent = 'Successfully subscribed!';
+            } else {
+              messageEl.style.color = 'var(--warning)';
+              messageEl.textContent = result.message || 'Subscription failed.';
+            }
+            document.getElementById('emailInput').value = '';
+          })
+          .withFailureHandler(function(error) {
+            messageEl.style.color = 'var(--warning)';
+            messageEl.textContent = 'An error occurred. Please try again.';
+          })
+          .subscribe(email);
+      } else if (action === 'unsubscribe') {
+        google.script.run
+          .withSuccessHandler(function(result) {
+            if (result.success) {
+              messageEl.style.color = 'var(--secondary)';
+              messageEl.textContent = 'Successfully unsubscribed.';
+            } else {
+              messageEl.style.color = 'var(--warning)';
+              messageEl.textContent = result.message || 'Unsubscription failed.';
+            }
+            document.getElementById('emailInput').value = '';
+          })
+          .withFailureHandler(function(error) {
+            messageEl.style.color = 'var(--warning)';
+            messageEl.textContent = 'An error occurred. Please try again.';
+          })
+          .unsubscribe(email);
+      }
+    }
+
+    // Process and display issues
+    function displayIssues(issues) {
+      // Early exit if no issues
+      if (!issues || issues.length === 0) {
+        document.getElementById('issuesGrid').innerHTML = '<p class="no-issues">No issues found.</p>';
+        return;
+      }
+      
+      // Extract categories for filter tabs, excluding "General"
+      const categories = [];
+      issues.forEach(issue => {
+        if (issue.category && issue.category !== "General" && !categories.includes(issue.category)) {
+          categories.push(issue.category);
+        }
+      });
+      
+      // Populate category tabs only if we have meaningful categories
+      const categoryTabsEl = document.getElementById('categoryTabs');
+      categoryTabsEl.innerHTML = '';
+      
+      if (categories.length > 0) {
+        categoryTabsEl.innerHTML = '<div class="category-tab active" data-category="all">All Issues</div>';
+        
+        categories.forEach(category => {
+          categoryTabsEl.innerHTML += `<div class="category-tab" data-category="${category}">${category}</div>`;
+        });
+        
+        // Add event listeners to category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+          tab.addEventListener('click', function() {
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter issues by category
+            const category = this.getAttribute('data-category');
+            filterIssuesByCategory(issues, category);
+          });
+        });
+      } else {
+        // Hide the category tabs container if we don't have meaningful categories
+        categoryTabsEl.style.display = 'none';
+      }
+      
+      // Display the featured issue (first issue or one marked as featured)
+      const featuredIssue = issues.find(issue => issue.featured) || issues[0];
+      displayFeaturedIssue(featuredIssue);
+      
+      // Display all issues (excluding the featured one)
+      filterIssuesByCategory(issues, 'all');
+    }
+    
+    function displayFeaturedIssue(issue) {
+      const featuredIssueEl = document.getElementById('featuredIssue');
+      
+      // Check if issue is recent (within last 14 days) but we're not showing the badge anymore
+      const twoWeeksAgo = new Date();
+      twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+      const issueDate = new Date(issue.date);
+      
+      featuredIssueEl.innerHTML = `
+        <div class="featured-issue" data-aos="fade-up">
+          <div class="featured-image">
+            <img src="https://drive.google.com/thumbnail?id=${issue.imageId}" alt="${issue.title}">
+            <div class="featured-badge">Latest Issue</div>
+          </div>
+          <div class="featured-content">
+            <div class="featured-date">${issue.date}</div>
+            <h3 class="featured-title">${issue.description}</h3>
+            <p class="featured-description">Check out our latest issue of the Raider Report, featuring school news, sports updates, and student achievements.</p>
+            <a href="#" class="btn" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">Read Full Issue</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    function filterIssuesByCategory(issues, category) {
+      const issuesGridEl = document.getElementById('issuesGrid');
+      const carouselContainerEl = document.getElementById('carouselContainer');
+      const carouselDotsEl = document.getElementById('carouselDots');
+      
+      // Debug logs
+      console.log("Filtering issues for category:", category);
+      console.log("Number of issues:", issues.length);
+      
+      issuesGridEl.innerHTML = '';
+      carouselContainerEl.innerHTML = '';
+      carouselDotsEl.innerHTML = '';
+      
+      // Get featured issue to exclude from the grid
+      const featuredIssue = issues.find(issue => issue.featured) || issues[0];
+      
+      // Filter and display issues
+      const filteredIssues = issues.filter(issue => {
+        return (category === 'all' || issue.category === category) && issue.title !== featuredIssue.title;
+      });
+      
+      // Debug log
+      console.log("Filtered issues count:", filteredIssues.length);
+      
+      if (filteredIssues.length === 0) {
+        issuesGridEl.innerHTML = '<p class="no-issues">No issues found in this category.</p>';
+        return;
+      }
+      
+      // Calculate date for "new" badge (issues in the last 14 days)
+      const twoWeeksAgo = new Date();
+      twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+      
+      // Populate regular grid view
+      filteredIssues.forEach((issue, index) => {
+        const card = document.createElement('div');
+        card.className = 'issue-card';
+        card.style.animationDelay = `${0.1 * (index % 6)}s`;
+        
+        // Check if issue is recent to show "NEW" badge
+        const issueDate = new Date(issue.date);
+        const isNew = issueDate > twoWeeksAgo;
+        
+        // Build the card HTML
+        let cardHTML = `
+          <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">
+            <div class="issue-image">
+              <img src="https://drive.google.com/thumbnail?id=${issue.imageId}" alt="${issue.title}">
+              ${isNew ? '<div class="new-badge">NEW</div>' : ''}
+              <div class="issue-date">${issue.date}</div>
+            </div>
+            <div class="issue-content">
+              <h4 class="issue-title">${issue.description}</h4>
+              <div class="issue-footer">
+                <span class="read-more">Read More <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        `;
+        
+        card.innerHTML = cardHTML;
+        issuesGridEl.appendChild(card);
+      });
+      
+      // Populate mobile carousel view with all issues to enable circular navigation
+      filteredIssues.forEach((issue, index) => {
+        // Create carousel slide
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        slide.setAttribute('data-index', index);
+        
+        // Debug log for each issue
+        console.log("Creating slide for issue:", issue.title, "Image ID:", issue.imageId);
+        
+        // Check if issue is recent to show "NEW" badge
+        const issueDate = new Date(issue.date);
+        const isNew = issueDate > twoWeeksAgo;
+        
+        // Build the slide HTML with explicit image handling
+        slide.innerHTML = `
+          <div class="issue-card">
+            <a href="#" style="text-decoration: none; color: inherit;" onclick="handleIssueClick(event, '${issue.pdfId}', '${issue.pdf}', '${issue.title}')">
+              <div class="issue-image">
+                <img src="https://drive.google.com/thumbnail?id=${issue.imageId}" 
+                    alt="${issue.title || 'Issue image'}" 
+                    onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'; console.error('Failed to load image');">
+                ${isNew ? '<div class="new-badge">NEW</div>' : ''}
+                <div class="issue-date">${issue.date}</div>
+              </div>
+              <div class="issue-content">
+                <h4 class="issue-title">${issue.description || issue.title}</h4>
+                <div class="issue-footer">
+                  <span class="read-more">Read More <i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+          </div>
+        `;
+        
+        carouselContainerEl.appendChild(slide);
+        
+        // Create dot for this slide
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('data-index', index);
+        dot.addEventListener('click', function() {
+          moveToSlide(parseInt(this.getAttribute('data-index')));
+        });
+        
+        carouselDotsEl.appendChild(dot);
+      });
+      
+      // Initialize carousel
+      initCarousel();
+    }
+    
+    // Initialize the mobile carousel
+    let currentSlide = 0;
+    let slideCount = 0;
+    let isAnimating = false;
+
+    function initCarousel() {
+      const carousel = document.getElementById('carouselContainer');
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      slideCount = slides.length;
+      
+      console.log("Initializing carousel with", slideCount, "slides");
+      
+      if (slideCount <= 1) {
+        console.log("Not enough slides to initialize carousel");
+        return;
+      }
+      
+      // Set initial slide to the first one (index 0)
+      currentSlide = 0;
+      console.log("Setting initial slide to", currentSlide);
+      
+      // Set initial position
+      updateCarouselPosition();
+      
+      // Force visibility on all slides to debug
+      slides.forEach((slide, index) => {
+        // Make sure all slides are at least partially visible for debugging
+        slide.style.opacity = "0.7";
+        
+        if (index === currentSlide) {
+          slide.classList.add('active');
+          slide.style.opacity = "1";
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+      
+      // Set active class on initial dot
+      const dots = document.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      // Add event listeners for navigation
+      document.getElementById('carouselPrev').addEventListener('click', function() {
+        if (isAnimating) return;
+        moveToSlide(currentSlide - 1);
+      });
+      
+      document.getElementById('carouselNext').addEventListener('click', function() {
+        if (isAnimating) return;
+        moveToSlide(currentSlide + 1);
+      });
+      
+      // Add touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carousel.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      carousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance for swipe
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swipe left (next)
+          if (isAnimating) return;
+          moveToSlide(currentSlide + 1);
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swipe right (previous)
+          if (isAnimating) return;
+          moveToSlide(currentSlide - 1);
+        }
+      }
+    }
+    
+    function moveToSlide(index) {
+      if (slideCount <= 1) return; // Don't move if there's only 1 or 0 slides
+      
+      // Handle circular navigation
+      if (index < 0) {
+        index = slideCount - 1;
+      } else if (index >= slideCount) {
+        index = 0;
+      }
+      
+      // Set animating flag
+      isAnimating = true;
+      
+      // Update current slide index
+      currentSlide = index;
+      
+      // Update carousel position
+      updateCarouselPosition();
+      
+      // Update active classes on slides and dots
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      
+      // Reset animating flag after transition completes
+      setTimeout(() => {
+        isAnimating = false;
+      }, 400); // Match to CSS transition time
+    }
+    
+    function updateCarouselPosition() {
+      const carousel = document.getElementById('carouselContainer');
+      const slideWidth = document.querySelector('.carousel-slide').offsetWidth;
+      
+      // Simple calculation for a standard carousel - each slide takes full width
+      const offset = -currentSlide * slideWidth;
+      
+      carousel.style.transform = `translateX(${offset}px)`;
+    }
+
+    // Fetch issues on page load
+    function fetchIssues() {
+      google.script.run.withSuccessHandler(displayIssues).listNewspaperFiles();
+    }
+
+    // Initialize the website
+    document.addEventListener('DOMContentLoaded', fetchIssues);
+    
+    // Handle back button
+    window.addEventListener('popstate', fetchIssues);
+  </script>
+
+  <!-- Comprehensive fix for carousel issue cards not displaying -->
+  <script>
+    // Wait for the document to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add specific CSS styles to fix carousel issues
+      const fixStyle = document.createElement('style');
+      fixStyle.textContent = `
+        /* Force carousel slides and issue cards to be visible */
+        .carousel-slide {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+        
+        .carousel-slide .issue-card {
+          opacity: 1 !important;
+          visibility: visible !important;
+          animation: none !important;
+          transform: none !important;
+          background-color: white;
+          border: 1px solid #ddd;
+          min-height: 400px;
+          display: block !important;
+        }
+        
+        /* Ensure image containers have proper dimensions */
+        .carousel-slide .issue-image {
+          position: relative;
+          width: 100%;
+          height: 250px !important;
+          background-color: #f0f0f0;
+          border: 1px solid #eee;
+        }
+        
+        /* Fix image dimensions and positioning */
+        .carousel-slide .issue-image img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        /* Ensure content area is visible */
+        .carousel-slide .issue-content {
+          padding: 20px;
+          background-color: white;
+        }
+        
+        /* Make sure carousel container has proper dimensions */
+        #carouselContainer {
+          min-height: 450px;
+        }
+      `;
+      document.head.appendChild(fixStyle);
+      
+      // Function to fix the carousel issue cards
+      function fixCarouselCards() {
+        console.log('Applying carousel fix...');
+        
+        // Get all carousel slides
+        const slides = document.querySelectorAll('.carousel-slide');
+        console.log(`Found ${slides.length} carousel slides`);
+        
+        if (slides.length === 0) {
+          // If slides aren't found yet, try again in a moment
+          setTimeout(fixCarouselCards, 500);
+          return;
+        }
+        
+        // Process each slide
+        slides.forEach((slide, index) => {
+          // Force the slide to be visible
+          slide.style.opacity = '1';
+          slide.style.visibility = 'visible';
+          
+          // Get the issue card in this slide
+          const card = slide.querySelector('.issue-card');
+          if (card) {
+            // Reset any properties that might be hiding the card
+            card.style.opacity = '1';
+            card.style.visibility = 'visible';
+            card.style.animation = 'none';
+            card.style.transform = 'none';
+            card.style.display = 'block';
+            card.style.backgroundColor = 'white';
+            card.style.border = '1px solid #ddd';
+            card.style.minHeight = '400px';
+            
+            console.log(`Fixed card in slide ${index}`);
+          } else {
+            console.log(`No issue card found in slide ${index}`);
+          }
+          
+          // Ensure image container is visible and properly sized
+          const imgContainer = slide.querySelector('.issue-image');
+          if (imgContainer) {
+            imgContainer.style.position = 'relative';
+            imgContainer.style.width = '100%';
+            imgContainer.style.height = '250px';
+            imgContainer.style.backgroundColor = '#f0f0f0';
+          }
+          
+          // Fix the image itself
+          const img = slide.querySelector('.issue-image img');
+          if (img) {
+            img.style.position = 'absolute';
+            img.style.top = '0';
+            img.style.left = '0';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            
+            // Add error handling for images
+            img.onerror = function() {
+              console.error('Image failed to load, using placeholder');
+              this.onerror = null;
+              this.src = 'https://via.placeholder.com/300x400?text=Issue+Image';
+            };
+          }
+        });
+        
+        // Fix carousel container
+        const container = document.getElementById('carouselContainer');
+        if (container) {
+          container.style.minHeight = '450px';
+        }
+        
+        console.log('Carousel fix applied');
+      }
+      
+      // Apply the fix after a delay to ensure all elements are loaded
+      setTimeout(fixCarouselCards, 1000);
+      
+      // Also run the fix when category tabs are clicked (which rebuilds the carousel)
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          setTimeout(fixCarouselCards, 1000);
+        });
+      });
+    });
+  </script>
+
+  <!-- Cross-browser compatibility fixes -->
+  <script>
+    // Fix for iOS Safari, Instagram browser, and Android issues
+    (function() {
+      // Detect if we're running in Instagram, iOS Safari, or Android browser
+      const ua = navigator.userAgent.toLowerCase();
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+      const isInstagram = ua.indexOf('instagram') > -1;
+      const isAndroid = ua.indexOf('android') > -1;
+      const isSafari = ua.indexOf('safari') > -1 && ua.indexOf('chrome') === -1;
+      
+      // Add platform-specific classes to body
+      document.addEventListener('DOMContentLoaded', function() {
+        if (isIOS) document.body.classList.add('ios-device');
+        if (isInstagram) document.body.classList.add('instagram-browser');
+        if (isAndroid) document.body.classList.add('android-device');
+        if (isSafari) document.body.classList.add('safari-browser');
+        
+        // Add platform-specific CSS fixes
+        const platformStyle = document.createElement('style');
+        platformStyle.textContent = `
+          /* iOS Safari fixes */
+          .ios-device .scroll-to-top {
+            -webkit-tap-highlight-color: transparent;
+          }
+          
+          /* Fix for Instagram and in-app browsers */
+          .instagram-browser .modal-overlay,
+          .instagram-browser .pdf-modal {
+            display: none !important;
+          }
+          
+          /* Fix for Android devices */
+          .android-device {
+            -webkit-overflow-scrolling: touch;
+          }
+          
+          /* Ensure better touchability for all interactive elements */
+          .btn, .category-tab, a, button {
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          /* Fix for PDF viewing on mobile */
+          .pdf-iframe {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+            height: 100%;
+            border: none;
+          }
+        `;
+        document.head.appendChild(platformStyle);
+      });
+      
+      // Ensure all links to PDFs open properly on problematic browsers
+      document.addEventListener('click', function(e) {
+        // Look for links to PDFs
+        const target = e.target.closest('a');
+        if (target && (isIOS || isInstagram || isAndroid)) {
+          const href = target.getAttribute('href');
+          if (href && (href.includes('.pdf') || href.includes('drive.google.com'))) {
+            e.preventDefault();
+            window.open(href, '_blank');
+          }
+        }
+      }, true);
+      
+      // Fix for scrolling issues on iOS
+      if (isIOS) {
+        window.addEventListener('load', function() {
+          // Add momentum scrolling for iOS
+          document.body.style.webkitOverflowScrolling = 'touch';
+          
+          // Fix for iOS viewport height issues
+          const setVH = function() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+          };
+          setVH();
+          window.addEventListener('resize', setVH);
+        });
+      }
+    })();
+  </script>
+</body>
+</html> 
