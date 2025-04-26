@@ -1,14 +1,7 @@
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('Index')
     .setTitle("Fryeburg Academy Raider Report")
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes')
-    .addMetaTag('apple-mobile-web-app-capable', 'yes')
-    .addMetaTag('mobile-web-app-capable', 'yes')
-    .addMetaTag('theme-color', '#002D5B')
-    .addMetaTag('apple-mobile-web-app-status-bar-style', 'black-translucent')
-    .addMetaTag('format-detection', 'telephone=no')
-    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
-    .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
 }
 
 /**
@@ -201,16 +194,17 @@ function getAnalytics() {
 /**
  * Send notification emails to subscribers when a new issue is released
  */
-function sendNotificationEmails(issueNumber) {
+function sendNotificationEmails() {
   const subscribersSheetId = "1RS-tA0CBpCfQk1qOKk4ExAHvtoaQh2kPs6tpDRjRnlc";
   const issuesSheet = SpreadsheetApp.openById("1LK4lA_7qka9G5-F3uikr6U5cOH6UqeGtElOuhJQFmGs").getSheetByName("Sheet1");
+  const issueNumber = issuesSheet.getRange("F2").getValue();
   
   try {
     const subscribersSheet = SpreadsheetApp.openById(subscribersSheetId).getSheetByName("Sheet1");
     const subscribers = subscribersSheet.getDataRange().getValues();
     
     const subject = `🗞️ Raider Report Issue #${issueNumber} is now available!`;
-    const websiteUrl = "https://script.google.com/macros/s/AKfycbwwKvnpiyRqAXCVNqTyCE3uzIJVeEg7pF7Uj43InvMHHwmCNdyKOTT-VUU9McSQjXlh5g/exec";
+    const websiteUrl = "https://sites.google.com/view/practice-code/raider-report";
     
     const message = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
@@ -439,4 +433,4 @@ function getPdfEmbedUrl(fileId) {
     Logger.log("Error in getPdfEmbedUrl: " + error.toString());
     return null;
   }
-}
+} 
